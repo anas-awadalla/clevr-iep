@@ -23,7 +23,7 @@ parser.add_argument('--image_width', default=224, type=int)
 
 parser.add_argument('--model', default='resnet101')
 parser.add_argument('--model_stage', default=3, type=int)
-parser.add_argument('--batch_size', default=4, type=int, help="Make sure batch_size not greater than dataset size")
+parser.add_argument('--batch_size', required=True, default=1, type=int, help="Make sure batch_size not greater than dataset size")
 
 
 def build_model(args):

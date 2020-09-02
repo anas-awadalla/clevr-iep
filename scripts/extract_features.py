@@ -23,7 +23,7 @@ parser.add_argument('--image_width', default=224, type=int)
 
 parser.add_argument('--model', default='resnet101')
 parser.add_argument('--model_stage', default=3, type=int)
-parser.add_argument('--batch_size', default=128, type=int)
+parser.add_argument('--batch_size', default=4, type=int, help="Make sure batch_size not greater than dataset size")
 
 
 def build_model(args):
@@ -72,7 +72,7 @@ def main(args):
     idx_set.add(idx)
   input_paths.sort(key=lambda x: x[1])
   assert len(idx_set) == len(input_paths)
-  assert min(idx_set) == 0 and max(idx_set) == len(idx_set) - 1
+  # assert min(idx_set) == 0 and max(idx_set) == len(idx_set) - 1
   if args.max_images is not None:
     input_paths = input_paths[:args.max_images]
   print(input_paths[0])
